@@ -30,6 +30,19 @@ export async function generateMetadata({
   }
 }
 
+// generate this static page in the build
+export async function generateStaticParams() {
+  const response = await api('/products/featured')
+  const products: Product[] = await response.json()
+
+  // return [{ slug: 'sweatshirt-never-stop-learning' }]
+  return products.map((product) => {
+    return {
+      slug: product.slug,
+    }
+  })
+}
+
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProductBySlug(params.slug)
 
