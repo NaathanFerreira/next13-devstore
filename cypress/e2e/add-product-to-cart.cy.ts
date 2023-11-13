@@ -1,7 +1,9 @@
 describe('add product to cart', () => {
-  it('should be able to navigate to the product page and add it to the cart', () => {
-    cy.visit('http://localhost:3000/')
+  beforeEach(() => {
+    cy.visit('/')
+  })
 
+  it('should be able to navigate to the product page and add it to the cart', () => {
     // first *a* element with *href* prop /product
     cy.get('a[href^="/product"]').first().click()
 
@@ -12,8 +14,6 @@ describe('add product to cart', () => {
   })
 
   it('should not count duplicated products on cart', () => {
-    cy.visit('http://localhost:3000/')
-
     // first *a* element with *href* prop /product
     cy.get('a[href^="/product"]').first().click()
 
@@ -25,8 +25,6 @@ describe('add product to cart', () => {
   })
 
   it('should be able to search for a product and add it to the cart', () => {
-    cy.visit('http://localhost:3000/')
-
     cy.get('input[name=q]').type('Sweatshirt').parent('form').submit()
 
     // first *a* element with *href* prop /product
