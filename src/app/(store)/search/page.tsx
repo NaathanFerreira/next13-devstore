@@ -34,7 +34,7 @@ export default async function Search({ searchParams }: SearchProps) {
         Results for: <span className="font-semibold">{query}</span>
       </p>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-6">
         {products.map((product) => {
           return (
             <Link
